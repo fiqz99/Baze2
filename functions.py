@@ -27,7 +27,58 @@ def loadAgencies():
 def loadWorkers(id):
     con = mysql.connector.connect(host="localhost", user="root", password="", database="marketing_agencies")
     csr = con.cursor()
-    sql = "select * from workers where agency_id =" + str(id)
+    sql = "select * from worker where agency_id =" + str(id)
     csr.execute(sql)
     rez = csr.fetchall()
     return rez
+
+def showWorker(id):
+    print(id)
+    con = mysql.connector.connect(host="localhost", user="root", password="", database="marketing_agencies")
+    csr = con.cursor()
+    sql = "select * from worker where worker_id =" + str(id)
+    csr.execute(sql)
+    rez = csr.fetchall()
+    return rez
+
+def getCompany(id):
+    print(id)
+    con = mysql.connector.connect(host="localhost", user="root", password="", database="marketing_agencies")
+    csr = con.cursor()
+    sql = "select agency_name from marketing_agency where agency_id =" + str(id)
+    csr.execute(sql)
+    rez = csr.fetchall()
+    return rez
+
+def loadClients():
+    con = mysql.connector.connect(host="localhost", user="root", password="", database="marketing_agencies")
+    csr = con.cursor()
+    sql = "select * from clients"
+    csr.execute(sql)
+    rez = csr.fetchall()
+    return rez
+
+def nameSearch(name):
+    con = mysql.connector.connect(host="localhost", user="root", password="", database="marketing_agencies")
+    csr = con.cursor()
+    sql = "select * from worker where worker_name like '%" + name + "%'"
+    csr.execute(sql)
+    rez = csr.fetchall()
+    return rez
+
+def returnPostCode(id):
+    con = mysql.connector.connect(host="localhost", user="root", password="", database="marketing_agencies")
+    csr = con.cursor()
+    sql = "select city_postCode from marketing_agency where agency_id =" + str(id)
+    csr.execute(sql)
+    rez = csr.fetchall()
+    return rez
+
+def returnCity(id):
+    con = mysql.connector.connect(host="localhost", user="root", password="", database="marketing_agencies")
+    csr = con.cursor()
+    postcode = returnPostCode(id)
+    sql = "select city_name from city where post_code =" + str(postcode[0][0])
+    csr.execute(sql)
+    rez = csr.fetchall()
+    retu
