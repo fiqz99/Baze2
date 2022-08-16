@@ -1,11 +1,11 @@
-- phpMyAdmin SQL Dump
--- version 5.0.2
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 15, 2022 at 09:32 PM
--- Server version: 5.7.31
--- PHP Version: 7.3.21
+-- Generation Time: Aug 16, 2022 at 02:45 PM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,6 +49,15 @@ CREATE TABLE IF NOT EXISTS `city` (
   PRIMARY KEY (`post_code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `city`
+--
+
+INSERT INTO `city` (`post_code`, `city_name`) VALUES
+(34000, 'Kragujevac'),
+(18000, 'Nis'),
+(11000, 'Beograd');
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +71,14 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `client_name` varchar(50) NOT NULL,
   PRIMARY KEY (`client_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`client_id`, `client_adress`, `client_name`) VALUES
+(1, 'Velike pcelice BB', 'Moonlight shop'),
+(2, '9. maja 14', 'STR Ukus');
 
 -- --------------------------------------------------------
 
@@ -198,7 +215,10 @@ CREATE TABLE IF NOT EXISTS `worker` (
 --
 
 INSERT INTO `worker` (`worker_id`, `worker_name`, `worker_surname`, `worker_gender`, `worker_adress`, `agency_id`) VALUES
-(15, 'Marko', 'Markovic', 'M', 'Bulevar Oslobodjenja 15', 2);
+(15, 'Marko', 'Markovic', 'M', 'Bulevar Oslobodjenja 15', 2),
+(11, 'Jovan', 'Jovanovic', 'M', 'Save Kovacevica 2', 2),
+(22, 'Milica', 'Milovic', 'F', 'Svetozara Markovica 12', 3),
+(28, 'Dragana', 'Pavic', 'F', 'Kralja Aleksandra 123', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
